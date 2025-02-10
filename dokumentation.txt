@@ -1,0 +1,29 @@
+Den här programmet huvudsyfte är att plocka fram produkter från en HTML baserat hemsida. I det här fallet blir
+det alphaspel. Det här brukar kallas för Web scraping. Jag tycker att iden att "skrapa" fram information
+känns väldigt avancerat, intressant och aktuellt idag. Att information sedan lagras i databaser m.m. 
+har orsakat många diskussioner och debatter. 
+
+
+Jag bestämde mig först att plocka fram:
+ Avancerad databashantering, Automatisering eller multitrådning, API-integrationer 
+Med detta importeras pandas, requests och beautifulsoup bibliotek.
+Därefter tillades Enhetstestning och felsökning (pytest), SQL med Python (DBgate) och Filhantering i programmet.
+Med detta importeras pytest, sqlite3 och logging. Totalt 6st
+
+I den här programmet tas produkterna tas ut och sparas som en CSV fil för lättare läsning istället för terminalen.
+Parsning (analys av en process strängar & symboler) sker med beautifulsoup därefter konverterar 
+lista till pandas dataframe & sparar som CSV.Skrapade informationen sparas även in till databasen, där
+informationen kan tas fram med SQL via DBgate(SQLite). Kör queryn SELECT * FROM products;
+I SQL har vi id som primarykey och sedan har vi name & price.
+
+Main körs för att skrapa fram information. I main, på fetch_page bestämmer vi länken till hemsidan.
+Det är viktigt att du kör inspect på hemsidan och listar ut vad div-classerna heter om du byter hemsida.
+Om ingen namn hittas får vi printad no name found. I mappen tests har vi användning av pytest för att
+testa fram detta. Med flera asserts kollar pytest fram om t.ex. rätt namn har angivits eller rätt pris. 
+Det finns flera asserts, och kommentarer som förklarar varje assert.
+
+I vårt program använder vi bara namn på produkten och
+priset på produkten. 
+
+Efter programmet körs, loggas allt. Vi får fram en app.log som du kan senare kolla på för att se datum och tid.
+Informationen sparas även som en db, som kan sedan ses med querys i dbGate programmet med sqlite.
